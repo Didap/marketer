@@ -1,0 +1,52 @@
+{
+  "name": "marketer",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.28.2",
+  "scripts": {
+    "dev": "nuxt dev --host 127.0.0.1 --port 4311",
+    "build": "nuxt build",
+    "start": "node --env-file=.env .output/server/index.mjs",
+    "postinstall": "nuxt prepare",
+    "setup": "node scripts/setup.mjs",
+    "worker": "node --env-file=.env --import tsx worker/index.ts",
+    "typecheck": "nuxt typecheck && tsc -p tsconfig.worker.json --noEmit",
+    "test": "vitest run",
+    "check": "node scripts/check.mjs",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "node --env-file=.env --import tsx scripts/migrate.ts",
+    "segnali": "node --env-file=.env --import tsx scripts/segnali.ts",
+    "contatti": "node --env-file=.env --import tsx scripts/contatti.ts",
+    "service": "node scripts/service.mjs",
+    "mcp:register": "node --env-file=.env scripts/mcp-register.mjs"
+  },
+  "dependencies": {
+    "@iconify-json/lucide": "^1.2.147",
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "@nuxt/ui": "^4.12.0",
+    "better-sqlite3": "^13.0.3",
+    "chrome-launcher": "1.2.2",
+    "drizzle-orm": "^0.45.4",
+    "lighthouse": "13.5.0",
+    "nuxt": "^4.6.2",
+    "tailwindcss": "^4.3.3",
+    "tsx": "^4.23.15",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^9.6.0",
+    "@types/node": "^24.0.0",
+    "drizzle-kit": "^0.31.11",
+    "typescript": "^6.0.3",
+    "vitest": "^5.0.5",
+    "vue-tsc": "^3.3.13"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "better-sqlite3",
+      "esbuild",
+      "vue-demi"
+    ]
+  }
+}
